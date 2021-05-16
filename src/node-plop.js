@@ -95,10 +95,10 @@ function nodePlop(plopfilePath = '', plopCfg = {}) {
 			}, includeCfg);
 
 			const genNameList = proxy.getGeneratorList().map(g => g.name);
-			loadAsset(genNameList, include.generators, setGenerator, proxyName => ({proxyName, proxy}));
-			loadAsset(proxy.getPartialList(), include.partials, setPartial, proxy.getPartial);
-			loadAsset(proxy.getHelperList(), include.helpers, setHelper, proxy.getHelper);
-			loadAsset(proxy.getActionTypeList(), include.actionTypes, setActionType, proxy.getActionType);
+			loadAsset(genNameList, includeCfg===true || include.generators, setGenerator, proxyName => ({proxyName, proxy}));
+			loadAsset(proxy.getPartialList(), includeCfg===true || include.partials, setPartial, proxy.getPartial);
+			loadAsset(proxy.getHelperList(), includeCfg===true || include.helpers, setHelper, proxy.getHelper);
+			loadAsset(proxy.getActionTypeList(), includeCfg===true || include.actionTypes, setActionType, proxy.getActionType);
 		});
 	}
 

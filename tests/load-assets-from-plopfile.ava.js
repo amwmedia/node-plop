@@ -81,6 +81,21 @@ test('plop.load passes a config object that can be used to change the plopfile o
 	t.true(plop.getActionTypeList().includes('test-actionType1'));
 });
 
+test('plop.load passes a config option that can be used to include all the plopfile output', function (t) {
+	const plop = nodePlop();
+	plop.load(plopfilePath, {prefix: 'test-'}, true);
+
+	const gNameList = plop.getGeneratorList().map(g => g.name);
+	t.is(gNameList.length, 3);
+	t.is(plop.getHelperList().length, 3);
+	t.is(plop.getPartialList().length, 3);
+	t.is(plop.getActionTypeList().length, 1);
+	t.true(gNameList.includes('test-generator1'));
+	t.true(plop.getHelperList().includes('test-helper2'));
+	t.true(plop.getPartialList().includes('test-partial3'));
+	t.true(plop.getActionTypeList().includes('test-actionType1'));
+});
+
 test('plop.load should import functioning assets', function (t) {
 	const plop = nodePlop();
 	plop.load(plopfilePath, {prefix: 'test-'}, {
