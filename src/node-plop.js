@@ -7,6 +7,7 @@ import resolve from 'resolve';
 
 import bakedInHelpers from './baked-in-helpers';
 import generatorRunner from './generator-runner';
+import * as buildInActions from './actions';
 
 function nodePlop(plopfilePath = '', plopCfg = {}) {
 
@@ -17,7 +18,7 @@ function nodePlop(plopfilePath = '', plopCfg = {}) {
 	const {destBasePath, force} = plopCfg;
 	const generators = {};
 	const partials = {};
-	const actionTypes = {};
+	const actionTypes = { ...buildInActions };
 	const helpers = Object.assign({
 		pkg: (propertyPath) => _get(pkgJson, propertyPath, '')
 	}, bakedInHelpers);

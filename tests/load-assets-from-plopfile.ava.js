@@ -74,7 +74,7 @@ test('plop.load passes a config object that can be used to change the plopfile o
 	t.is(gNameList.length, 3);
 	t.is(plop.getHelperList().length, 3);
 	t.is(plop.getPartialList().length, 3);
-	t.is(plop.getActionTypeList().length, 1);
+	t.is(plop.getActionTypeList().length, 5);
 	t.true(gNameList.includes('test-generator1'));
 	t.true(plop.getHelperList().includes('test-helper2'));
 	t.true(plop.getPartialList().includes('test-partial3'));
