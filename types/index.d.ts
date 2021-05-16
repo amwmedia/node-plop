@@ -94,7 +94,7 @@ export type Actions = DynamicActionsFunction | ActionType[];
 
 export type CustomActionFunction = (
 	answers: object,
-	config?: ActionConfig,
+	config?: AddActionConfig,
 	plopfileApi?: NodePlopAPI
 ) => Promise<string> | string; // Check return type?
 
