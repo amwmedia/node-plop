@@ -83,7 +83,7 @@ function nodePlop(plopfilePath = '', plopCfg = {}) {
 		}, loadCfg);
 
 		targets.forEach(function (target) {
-			const targetPath = resolve.sync(target, {basedir: getPlopfilePath()});
+			const targetPath = resolve.sync(target, {basedir: getPlopfilePath(), preserveSymlinks: false});
 			const proxy = nodePlop(targetPath, config);
 			const proxyDefaultInclude = proxy.getDefaultInclude() || {};
 			const includeCfg = includeOverride || proxyDefaultInclude;
