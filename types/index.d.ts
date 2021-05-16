@@ -1,15 +1,25 @@
-import inquirer = require('inquirer');
+import inquirer from 'inquirer';
 // @types/globby doesn't export types for GlobOptions, so we have to work a little bit to extract them:
 // GlobOptions is the second parameter of the sync function, which can be extracted with the Parameters<T> type
 import { sync as _sync } from 'globby';
 type GlobOptions = Parameters<typeof _sync>[1];
 import { HelperDelegate as HelperFunction } from 'handlebars';
 
+export type IncludeDefinition =
+	| boolean
+	| string[]
+	| {
+		generators?: boolean;
+		helpers?: boolean;
+		partials?: boolean;
+		actionTypes?: boolean;
+	};
+
 export interface NodePlopAPI {
 	getGenerator(name: string): PlopGenerator;
 	setGenerator(name: string, config: PlopGeneratorConfig): PlopGenerator;
 
-	setPrompt(name: string, prompt: inquirer.PromptModule): void;
+	setPrompt(name: string, prompt: inquirer.prompts.PromptConstructor): void;
 	setWelcomeMessage(message: string): void;
 	getWelcomeMessage(): string;
 	getGeneratorList(): { name: string; description: string }[];
@@ -28,7 +38,7 @@ export interface NodePlopAPI {
 	getDestBasePath(): string;
 
 	// plop.load functionality
-	load(target: string[] | string, loadCfg: PlopCfg, includeOverride: boolean): void;
+	load(target: string[] | string, loadCfg: Partial<PlopCfg> | null, includeOverride: IncludeDefinition): void;
 	setDefaultInclude(inc: object): void;
 	getDefaultInclude(): object;
 
