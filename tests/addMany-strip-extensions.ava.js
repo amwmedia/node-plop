@@ -13,6 +13,7 @@ test.before(() => {
 
 test('Check that all files generated without hbs extension', t => {
 	const expectedFiles = [
+		'remove-hbs/.john-doe-my-view',
 		'remove-hbs/john-doe-my-view.js',
 		'remove-hbs/john-doe-my-view.spec.js',
 	];
@@ -24,6 +25,7 @@ test('Check that all files generated without hbs extension', t => {
 
 test('Check that all files generated with all extensions removed', t => {
 	const expectedFiles = [
+		'remove-all/.my-view',
 		'remove-all/my-view.spec',
 		'remove-all/my-view.spec.js',
 	];

@@ -89,7 +89,5 @@ function stripExtensions(shouldStrip, fileName) {
 	)
 		return fileName;
 
-	return path.parse(maybeFile.name).ext !== ''
-		? path.join(maybeFile.dir, maybeFile.name)
-		: fileName;
+	return path.join(maybeFile.dir, maybeFile.name);
 }

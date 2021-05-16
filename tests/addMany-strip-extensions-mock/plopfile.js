@@ -21,13 +21,15 @@ module.exports = function (plop) {
 				destination: 'src/',
 				stripExtensions: ['hbs'],
 				templateFiles: 'plop-templates/remove-hbs/*',
-				abortOnFail: true
+				abortOnFail: true,
+				globOptions: { dot: true },
 			},{
 				type: 'addMany',
 				destination: 'src/',
 				stripExtensions: true,
 				templateFiles: 'plop-templates/remove-all/*',
-				abortOnFail: true
+				abortOnFail: true,
+				globOptions: { dot: true },
 			}
 		]
 	});
